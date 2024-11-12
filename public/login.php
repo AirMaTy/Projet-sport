@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (isset($_SESSION['username'])) {
+    header('Location: dashboard.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,6 +30,7 @@
     <div class="forgot-password">
         <a href="#">Mot de passe oublié ?</a>
     </div>
+
 </div>
 
 </body>
