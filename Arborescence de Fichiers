@@ -1,0 +1,59 @@
+projet-sport/
+├── config/
+│   ├── config.php                # Fichier de configuration (BDD, constantes, etc.)        
+│   └── database.php              # Connexion à la base de données avec PDO
+├── public/
+│   ├── index.php                 # Page d'accueil ou redirection vers la page de connexion --> Lien de redirection
+│   ├── login.php                 # Page de connexion                                       --> Requete SQL pour la connexion
+│   ├── dashboard.php             # Tableau de bord de l'entraîneur après connexion
+│   ├── joueurs/
+│   │   ├── liste.php             # Liste des joueurs
+│   │   ├── ajouter.php           # Formulaire d'ajout de joueur
+│   │   ├── modifier.php          # Formulaire de modification d'un joueur
+│   │   └── supprimer.php         # Script pour supprimer un joueur
+│   ├── matchs/
+│   │   ├── liste.php             # Liste des matchs
+│   │   ├── ajouter.php           # Formulaire d'ajout d'un match
+│   │   ├── modifier.php          # Formulaire de modification d'un match
+│   │   └── resultats.php         # Page pour entrer le résultat et évaluation des joueurs
+│   ├── feuilles_match/
+│   │   ├── selection.php         # Sélection des joueurs pour un match
+│   │   └── visualiser.php        # Affichage de la feuille de match
+│   ├── statistiques/
+│   │   └── index.php             # Page d'affichage des statistiques globales et par joueur
+│   └── assets/
+│       ├── css/
+│       │   ├── style.css         # Feuille de style principale
+│       │   └── bootstrap.css     # Optionnel : pour utiliser Bootstrap ou autre framework CSS
+│       ├── js/
+│       │   └── script.js         # Scripts JavaScript pour des interactions dynamiques
+│       └── images/
+│           └── logo.png          # Logo de l'application (si nécessaire)
+├── src/
+│   ├── controllers/
+│   │   ├── JoueursController.php  # Gestion des joueurs (ajout, modification, suppression)
+│   │   ├── MatchsController.php   # Gestion des matchs
+│   │   ├── FeuillesMatchController.php # Gestion des feuilles de match (sélection, visualisation)
+│   │   └── StatistiquesController.php  # Calcul et affichage des statistiques
+│   ├── models/
+│   │   ├── Joueur.php             # Modèle de données pour les joueurs
+│   │   ├── Match.php              # Modèle de données pour les matchs
+│   │   ├── FeuilleMatch.php       # Modèle de données pour les feuilles de match
+│   │   └── Evaluation.php         # Modèle pour les évaluations des joueurs
+│   └── views/
+│       ├── layouts/
+│       │   └── header.php         # En-tête de page (inclus sur chaque page)
+│       │   └── footer.php         # Pied de page (inclus sur chaque page)
+│       ├── joueurs/
+│       │   ├── form.php           # Formulaire d'ajout/modification d'un joueur
+│       │   ├── list.php           # Vue pour la liste des joueurs
+│       ├── matchs/
+│       │   ├── form.php           # Formulaire d'ajout/modification d'un match
+│       │   ├── list.php           # Vue pour la liste des matchs
+│       ├── feuilles_match/
+│       │   └── selection_form.php # Formulaire pour sélectionner les joueurs pour un match
+│       └── statistiques/
+│           └── list.php           # Vue pour les statistiques
+├── sql/
+│   └── schema.sql                 # Script de création de la base de données et des tables
+└── .gitignore                     # Fichier .gitignore pour Git (exclut les fichiers sensibles)

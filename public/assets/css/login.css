@@ -1,0 +1,120 @@
+/* Réinitialisation des marges et des paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Conteneur du formulaire de connexion */
+.login-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Titre du formulaire */
+.login-container h2 {
+  color: #004080;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+/* Champs du formulaire */
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  color: #333;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+  outline: none;
+  border-color: #004080;
+  box-shadow: 0 0 5px rgba(0, 64, 128, 0.3);
+}
+
+/* Bouton de connexion */
+.login-container button[type="submit"] {
+  background-color: #004080;
+  color: #ffffff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-container button[type="submit"]:hover {
+  background-color: #0059b3;
+}
+
+/* Lien mot de passe oublié */
+.login-container .forgot-password {
+  margin-top: 15px;
+}
+
+.login-container .forgot-password a {
+  color: #004080;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s;
+}
+
+.login-container .forgot-password a:hover {
+  color: #0059b3;
+}
+
+/* Messages d'erreur ou d'information */
+.login-container .error,
+.login-container .info {
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+.login-container .error {
+  color: #d9534f;
+}
+
+.login-container .info {
+  color: #5bc0de;
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
+  .login-container {
+    padding: 30px;
+  }
+
+  .login-container h2 {
+    font-size: 1.5em;
+  }
+
+  .login-container button[type="submit"] {
+    font-size: 0.9em;
+  }
+}

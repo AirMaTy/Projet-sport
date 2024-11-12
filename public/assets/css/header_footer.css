@@ -1,0 +1,99 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header */
+header {
+  background-color: #004080;
+  padding: 20px 0;
+  color: #ffffff;
+}
+
+.header-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Titre du site */
+header h1 {
+  font-size: 1.8em;
+  color: #ffffff;
+}
+
+/* Navigation */
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+header nav ul li {
+  position: relative;
+}
+
+header nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1em;
+  transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+  color: #a3c9f9;
+}
+
+header .logout {
+  font-weight: bold;
+  color: #ff7f7f;
+}
+
+header .logout:hover {
+  color: #ff4d4d;
+}
+
+/* Footer */
+footer {
+  background-color: #f4f4f9;
+  padding: 20px 0;
+  color: #333;
+  text-align: center;
+}
+
+.footer-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer p {
+  font-size: 0.9em;
+  color: #666;
+}
+
+footer p a {
+  color: #004080;
+  text-decoration: none;
+}
+
+footer p a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
