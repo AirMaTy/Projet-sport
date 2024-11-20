@@ -1,9 +1,14 @@
 <?php
-require_once 'config.php';
+$host = 'localhost';
+$dbname = 'gestion_equipe';
+$username = 'root';
+$password = '';
 
 try {
-    $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Erreur de connexion à la base de données : " . $e->getMessage());
+    echo "Erreur de connexion : " . $e->getMessage();
+    exit;
 }
+?>

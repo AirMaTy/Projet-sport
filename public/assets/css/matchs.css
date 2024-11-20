@@ -1,0 +1,33 @@
+/* matchs.css */
+h1 {
+    text-align: center;
+    color: #222;
+    margin: 20px 0;
+}
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    background-color: #444;
+    color: #fff;
+}
+
+table tr:nth-child(odd) {
+    background-color: #f4f4f9;
+}
+
+table tr:hover {
+    background-color: #eef;
+}

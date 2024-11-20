@@ -14,11 +14,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         header('Location: dashboard.php');
         exit;
     } else {
-        $error = "Nom d'utilisateur ou mot de passe incorrect.";
+        echo "Nom d'utilisateur ou mot de passe incorrect.";
     }
-}
-
-if (isset($error)) {
-    echo "<script>alert('$error'); window.location.href = 'login.php';</script>";
 }
 ?>

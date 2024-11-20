@@ -1,11 +1,13 @@
 projet-sport/
 ├── config/
-│   ├── config.php                # Fichier de configuration (BDD, constantes, etc.)        --> FAIT
-│   └── database.php              # Connexion à la base de données avec PDO                 --> FAIT
+│   ├── config.php                # Fichier de configuration (BDD, constantes, etc.)                --> FAIT
+│   └── database.php              # Connexion à la base de données avec PDO                         --> FAIT
 ├── public/
-│   ├── index.php                 # Page d'accueil ou redirection vers la page de connexion --> Lien de redirection
-│   ├── login.php                 # Page de connexion                                       --> Requete SQL pour la connexion
+│   ├── index.php                 # Page d'accueil ou redirection vers la page de connexion         --> FAIT
+│   ├── login.php                 # Page de connexion                                               --> FAIT (ID = Coach123 MDP = mdpcoach)
 │   ├── dashboard.php             # Tableau de bord de l'entraîneur après connexion
+│   ├── logout.php                # Page de déconnexion (clear session...)                          --> FAIT
+│   ├── authenticate.php          # backend de connexion au compte Coach                            --> FAIT
 │   ├── joueurs/
 │   │   ├── liste.php             # Liste des joueurs
 │   │   ├── ajouter.php           # Formulaire d'ajout de joueur
@@ -23,12 +25,9 @@ projet-sport/
 │   │   └── index.php             # Page d'affichage des statistiques globales et par joueur
 │   └── assets/
 │       ├── css/
-│       │   ├── style.css         # Feuille de style principale
-│       │   └── bootstrap.css     # Optionnel : pour utiliser Bootstrap ou autre framework CSS
-│       ├── js/
-│       │   └── script.js         # Scripts JavaScript pour des interactions dynamiques
+│       │   └── style.css         # Feuille de style principale
 │       └── images/
-│           └── logo.png          # Logo de l'application (si nécessaire)
+│           └── logo.png          # Logo de l'application (si nécessaire)                           --> AJOUTÉ    
 ├── src/
 │   ├── controllers/
 │   │   ├── JoueursController.php  # Gestion des joueurs (ajout, modification, suppression)
@@ -37,7 +36,7 @@ projet-sport/
 │   │   └── StatistiquesController.php  # Calcul et affichage des statistiques
 │   ├── models/
 │   │   ├── Joueur.php             # Modèle de données pour les joueurs
-│   │   ├── Match.php              # Modèle de données pour les matchs
+│   │   ├── MatchModel.php              # Modèle de données pour les matchs
 │   │   ├── FeuilleMatch.php       # Modèle de données pour les feuilles de match
 │   │   └── Evaluation.php         # Modèle pour les évaluations des joueurs
 │   └── views/
@@ -55,5 +54,6 @@ projet-sport/
 │       └── statistiques/
 │           └── list.php           # Vue pour les statistiques
 ├── sql/
-│   └── schema.sql                 # Script de création de la base de données et des tables
+│   ├── schema.sql                 # Script de création de la base de données et des tables
+│   └── jeu-de-test.sql            # Jeu de test afin de tester la BD
 └── .gitignore                     # Fichier .gitignore pour Git (exclut les fichiers sensibles)
