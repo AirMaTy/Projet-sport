@@ -48,31 +48,62 @@ class Joueur {
     
 
     // Mise à jour des informations d'un joueur
-    public function updateJoueur($id, $nom, $prenom, $age, $poste) {
-        $date_naissance = date('Y-m-d', strtotime("-$age years"));
-        $sql = "UPDATE joueurs 
-                SET 
-                    nom = :nom, 
-                    prenom = :prenom, 
-                    date_naissance = :date_naissance, 
-                    poste_prefere = :poste 
-                WHERE id_joueur = :id";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
-        $stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
-        $stmt->bindParam(':date_naissance', $date_naissance, PDO::PARAM_STR);
-        $stmt->bindParam(':poste', $poste, PDO::PARAM_STR);
-        return $stmt->execute();
+    public function updateJoueur($id, $nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $commentaire, $poste_prefere) {
+        try {
+            $sql = "UPDATE joueurs 
+                    SET 
+                        nom = :nom, 
+                        prenom = :prenom, 
+                        num_licence = :num_licence, 
+                        date_naissance = :date_naissance, 
+                        taille_cm = :taille_cm, 
+                        poids_kg = :poids_kg, 
+                        statut = :statut, 
+                        commentaire = :commentaire, 
+                        poste_prefere = :poste_prefere 
+                    WHERE id_joueur = :id";
+    
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+            $stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+            $stmt->bindParam(':num_licence', $num_licence, PDO::PARAM_STR);
+            $stmt->bindParam(':date_naissance', $date_naissance, PDO::PARAM_STR);
+            $stmt->bindParam(':taille_cm', $taille_cm, PDO::PARAM_INT);
+            $stmt->bindParam(':poids_kg', $poids_kg, PDO::PARAM_INT);
+            $stmt->bindParam(':statut', $statut, PDO::PARAM_STR);
+            $stmt->bindParam(':commentaire', $commentaire, PDO::PARAM_STR);
+            $stmt->bindParam(':poste_prefere', $poste_prefere, PDO::PARAM_STR);
+    
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            throw new Exception("Erreur SQL lors de la mise à jour : " . $e->getMessage());
+        }
     }
+    
+    
+    
 
     public function getJoueurById($id) {
-        $sql = "SELECT * FROM joueurs WHERE id_joueur = :id";
+        $sql = "SELECT 
+                    id_joueur AS id, 
+                    nom, 
+                    prenom, 
+                    num_licence, 
+                    date_naissance, 
+                    taille_cm, 
+                    poids_kg, 
+                    statut, 
+                    commentaire, 
+                    poste_prefere 
+                FROM joueurs 
+                WHERE id_joueur = :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    
     
     
 }

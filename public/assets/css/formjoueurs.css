@@ -1,0 +1,207 @@
+/* Corps de la page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Conteneur général */
+.container {
+  padding: 20px;
+}
+
+/* Conteneur de la section de recherche */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+/* Titre de la recherche */
+.search-container h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Champ de recherche */
+.search-container input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+/* Bouton de recherche */
+.search-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.search-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Conteneur de la table */
+.table-container {
+  max-width: 900px;
+  margin: 20px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 10px;
+}
+
+/* Titre des résultats */
+.table-container h2 {
+  text-align: center;
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Table */
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.table-container th,
+.table-container td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-container th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.table-container tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-container tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Boutons dans les actions */
+.table-container form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.table-container form button:hover {
+  background-color: #218838;
+}
+
+/* Formulaire de modification */
+form {
+  max-width: 900px; /* Élargir la largeur maximale */
+  width: 90%; /* Ajouter une largeur relative */
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre du formulaire */
+form h2 {
+  text-align: center; /* Centrer le texte */
+  color: #444;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold; /* Rendre le titre plus visible */
+  margin-top: 0; /* Ajuster l'espace supérieur */
+}
+
+/* Champs du formulaire */
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+form input,
+form select,
+form textarea {
+  width: calc(50% - 10px); /* Prendre la moitié de l'espace disponible */
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: inline-block; /* Aligner les champs côte à côte */
+}
+
+form textarea {
+  width: 100%; /* Champ texte étendu sur une seule ligne */
+  resize: none;
+  height: 100px;
+}
+
+/* Bouton sauvegarder */
+form button {
+  width: 100%;
+  background-color: #ffc107;
+  color: #333;
+  border: none;
+  padding: 15px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #e0a800;
+}
+
+/* Messages d'erreur ou de succès */
+p.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+p.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+}

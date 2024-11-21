@@ -21,17 +21,21 @@ class JoueursController {
     }
 
     // Méthode pour gérer la modification
-    public function modifierJoueur($id, $nom, $prenom, $age, $poste) {
-        return $this->joueur->updateJoueur($id, $nom, $prenom, $age, $poste); // Correction ici
-    }
+    public function modifierJoueur($id, $nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $commentaire, $poste_prefere) {
+        try {
+            return $this->joueur->updateJoueur($id, $nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $commentaire, $poste_prefere);
+        } catch (Exception $e) {
+            return "Erreur lors de la modification : " . $e->getMessage();
+        }
+    }   
 
     public function getJoueurById($id) {
-        $joueur = $this->joueur->getJoueurById($id);
-        if (!$joueur) {
-            throw new Exception("Aucun joueur trouvé avec l'ID $id");
+        try {
+            return $this->joueur->getJoueurById($id);
+        } catch (Exception $e) {
+            return null;
         }
-        return $joueur;
-    }
+    }  
     
 }
 
