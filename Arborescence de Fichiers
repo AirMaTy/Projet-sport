@@ -9,9 +9,9 @@ projet-sport/
 │   ├── logout.php                # Page de déconnexion (clear session...)                          --> FAIT
 │   ├── authenticate.php          # backend de connexion au compte Coach                            --> FAIT
 │   ├── joueurs/
-│   │   ├── liste.php             # Liste des joueurs
-│   │   ├── ajouter.php           # Formulaire d'ajout de joueur
-│   │   ├── modifier.php          # Formulaire de modification d'un joueur
+│   │   ├── liste.php             # Liste des joueurs                                               --> FAIT
+│   │   ├── ajouter.php           # Formulaire d'ajout de joueur        
+│   │   ├── modifier.php          # Formulaire de modification d'un joueur                          --> FAIT
 │   │   └── supprimer.php         # Script pour supprimer un joueur
 │   ├── matchs/
 │   │   ├── liste.php             # Liste des matchs
@@ -45,10 +45,10 @@ projet-sport/
 │       │   └── footer.php         # Pied de page (inclus sur chaque page)
 │       ├── joueurs/
 │       │   ├── form.php           # Formulaire d'ajout/modification d'un joueur
-│       │   ├── list.php           # Vue pour la liste des joueurs
+│       │   ├── list.php           # Vue pour la liste des joueurs                                  --> FAIT
 │       ├── matchs/
-│       │   ├── form.php           # Formulaire d'ajout/modification d'un match
-│       │   ├── list.php           # Vue pour la liste des matchs
+│       │   ├── form.php           # Formulaire d'ajout/modification d'un match                     --> Modification FAIT
+│       │   ├── list.php           # Vue pour la liste des matchs                                   --> FAIT
 │       ├── feuilles_match/
 │       │   └── selection_form.php # Formulaire pour sélectionner les joueurs pour un match
 │       └── statistiques/

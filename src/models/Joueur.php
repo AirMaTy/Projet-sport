@@ -81,9 +81,6 @@ class Joueur {
         }
     }
     
-    
-    
-
     public function getJoueurById($id) {
         $sql = "SELECT 
                     id_joueur AS id, 
@@ -102,8 +99,5 @@ class Joueur {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-    
-    
-    
+    }    
 }

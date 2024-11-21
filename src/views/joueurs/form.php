@@ -34,9 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$joueur) {
             $message = "Joueur introuvable.";
         }
-    }
-
-    
+    }    
 
     // Sauvegarder les modifications d'un joueur
     if (isset($_POST['sauvegarder'])) {
@@ -112,8 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <td><?= htmlspecialchars($joueur['poste']) ?></td>
                             <td>
                                 <form method="POST" action="">
-                                    <input type="hidden" name="id" value="<?= $joueur['id'] ?>">
-                                    <button type="submit" name="modifier">Modifier</button>
+                                <input type="hidden" name="id" value="<?= htmlspecialchars($joueur['id'] ?? '') ?>">
+                                <button type="submit" name="modifier">Modifier</button>
                                 </form>
                             </td>
                         </tr>
@@ -130,6 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['modifier']) && $joueur): ?>
         <h2>Modifier le joueur</h2>
         <form method="POST" action="">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($joueur['id'] ?? '') ?>">
             <div>
                 <label for="nom">Nom :</label>
                 <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($joueur['nom'] ?? '') ?>" required>
