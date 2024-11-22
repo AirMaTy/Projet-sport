@@ -100,4 +100,50 @@ class Joueur {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }    
+
+    public function createJoueur($nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $commentaire, $poste_prefere) {
+        try {
+            $sql = "INSERT INTO joueurs (nom, prenom, num_licence, date_naissance, taille_cm, poids_kg, statut, commentaire, poste_prefere)
+                    VALUES (:nom, :prenom, :num_licence, :date_naissance, :taille_cm, :poids_kg, :statut, :commentaire, :poste_prefere)";
+            
+            $stmt = $this->db->prepare($sql);
+    
+            // Lier les paramètres
+            $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+            $stmt->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+            $stmt->bindParam(':num_licence', $num_licence, PDO::PARAM_STR);
+            $stmt->bindParam(':date_naissance', $date_naissance, PDO::PARAM_STR);
+            $stmt->bindParam(':taille_cm', $taille_cm, PDO::PARAM_INT);
+            $stmt->bindParam(':poids_kg', $poids_kg, PDO::PARAM_INT);
+            $stmt->bindParam(':statut', $statut, PDO::PARAM_STR);
+            $stmt->bindParam(':commentaire', $commentaire, PDO::PARAM_STR);
+            $stmt->bindParam(':poste_prefere', $poste_prefere, PDO::PARAM_STR);
+    
+            // Exécuter la requête
+            $stmt->execute();
+    
+            return true; // Retourner true si la création est réussie
+        } catch (PDOException $e) {
+            throw new Exception("Erreur lors de la création du joueur : " . $e->getMessage());
+        }
+    }
+
+    public function ajouterJoueur($nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $commentaire, $poste_prefere)
+    {
+        $sql = "INSERT INTO joueurs (nom, prenom, num_licence, date_naissance, taille_cm, poids_kg, statut, commentaire, poste_prefere)
+                VALUES (:nom, :prenom, :num_licence, :date_naissance, :taille_cm, :poids_kg, :statut, :commentaire, :poste_prefere)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':prenom', $prenom);
+        $stmt->bindParam(':num_licence', $num_licence);
+        $stmt->bindParam(':date_naissance', $date_naissance);
+        $stmt->bindParam(':taille_cm', $taille_cm, PDO::PARAM_INT);
+        $stmt->bindParam(':poids_kg', $poids_kg, PDO::PARAM_INT);
+        $stmt->bindParam(':statut', $statut);
+        $stmt->bindParam(':commentaire', $commentaire);
+        $stmt->bindParam(':poste_prefere', $poste_prefere);
+        $stmt->execute();
+    }
+
+    
 }

@@ -40,10 +40,12 @@ class JoueursController {
     // Méthode pour ajouter un joueur
     public function ajouterJoueur($nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $commentaire, $poste_prefere) {
         try {
-            return $this->joueur->updateJoueur($id, $nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $commentaire, $poste_prefere);
+            // Utilisez createJoueur au lieu de updateJoueur
+            return $this->joueur->createJoueur($nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $commentaire, $poste_prefere);
         } catch (Exception $e) {
-            return "Erreur lors de la modification : " . $e->getMessage();
+            throw new Exception("Erreur lors de l'ajout : " . $e->getMessage());
         }
-    } 
+    }
+    
 }
 
