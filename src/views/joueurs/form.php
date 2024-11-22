@@ -105,8 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="forms-container">
       <!-- Formulaire d'ajout -->
       <div class="add-container">
-        <h2>Ajouter un nouveau joueur</h2>
         <form method="POST" action="">
+            <h2>Ajouter un nouveau joueur</h2>
             <label for="nom">Nom :</label>
             <input type="text" id="nom" name="nom" placeholder="Nom" required>
 

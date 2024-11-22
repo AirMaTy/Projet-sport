@@ -28,8 +28,7 @@ if (!isset($_SESSION['username'])) {
                 <p>Gérez les joueurs : ajouter, modifier, ou consulter la liste.</p>
                 <div class="buttons">
                     <a href="../public/joueurs/liste.php" class="button">Voir la liste</a>
-                    <a href="../public/joueurs/ajouter.php" class="button secondary">Ajouter un joueur</a>
-                    <a href="../public/joueurs/modifier.php" class="button secondary">Modifier un joueur</a>
+                    <a href="../public/joueurs/modifier.php" class="button secondary">Ajouter / Modifier un joueur</a>
                     <a href="../public/joueurs/supprimer.php" class="button danger">Supprimer un joueur</a>
                 </div>
             </div>
