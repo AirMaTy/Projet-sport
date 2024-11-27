@@ -67,4 +67,10 @@ class JoueursController {
         }
     }
 
+    public function supprimerJoueur(int $id): void
+    {
+        $this->joueur->supprimerJoueur($id);
+    }
+     
+
 }

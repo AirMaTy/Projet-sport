@@ -138,4 +138,13 @@ class Joueur {
         return true;
     }
 
+    public function supprimerJoueur(int $id): void
+    {
+        $sql = "DELETE FROM joueurs WHERE id_joueur = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+
 }
