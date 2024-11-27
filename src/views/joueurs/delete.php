@@ -4,12 +4,16 @@ require_once __DIR__ . '/../../../src/controllers/JoueursController.php';
 
 $controller = new JoueursController($pdo);
 $joueurs = $controller->afficherListe();
+$message = "";
 
 // Gérer la suppression
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_joueur'])) {
-    $controller->supprimerJoueur((int)$_POST['id_joueur']);
-    header('Location: ' . $_SERVER['PHP_SELF']);
-    exit;
+    $message = $controller->supprimerJoueur((int)$_POST['id_joueur']);
+    // Rediriger pour afficher les messages
+    if ($message === "Joueur supprimé avec succès.") {
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
+    }
 }
 ?>
 
@@ -23,6 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_joueur'])) {
 <body>
     <?php include(__DIR__ . '/../layouts/header.php'); ?>
     <h1>Liste des joueurs</h1>
+
+    <!-- Affichage du message d'information -->
+    <?php if ($message): ?>
+        <p><?= htmlspecialchars($message) ?></p>
+    <?php endif; ?>
+
     <table border="1">
         <tr>
             <th>ID</th>

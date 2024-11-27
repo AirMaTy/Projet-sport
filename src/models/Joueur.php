@@ -146,5 +146,15 @@ class Joueur {
         $stmt->execute();
     }
 
-
+    public function aParticipeAMatch($id_joueur) {
+        $sql = "SELECT COUNT(*) AS total 
+                FROM feuilles_match 
+                WHERE id_joueur = :id_joueur";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id_joueur', $id_joueur, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'] > 0; // Retourne vrai si le joueur a participé à au moins un match
+    }
+    
 }

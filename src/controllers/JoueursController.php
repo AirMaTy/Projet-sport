@@ -67,10 +67,15 @@ class JoueursController {
         }
     }
 
-    public function supprimerJoueur(int $id): void
+    public function supprimerJoueur(int $id): string
     {
+        // Vérifie si le joueur a participé à un match
+        if ($this->joueur->aParticipeAMatch($id)) {
+            return "Impossible de supprimer le joueur : il a déjà participé à un ou plusieurs matchs.";
+        }
+    
+        // Si le joueur n'a pas participé, supprimer
         $this->joueur->supprimerJoueur($id);
-    }
-     
-
+        return "Joueur supprimé avec succès.";
+    }    
 }
