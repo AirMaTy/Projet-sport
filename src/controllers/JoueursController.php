@@ -11,41 +11,60 @@ class JoueursController {
         $this->joueur = new Joueur($pdo);
     }
 
+    // Afficher tous les joueurs
     public function afficherListe() {
         return $this->joueur->getAll();
     }
 
-    // Méthode pour gérer la recherche
+    // Rechercher des joueurs
     public function rechercherJoueurs($critere) {
-        return $this->joueur->searchJoueurs($critere); // Correction ici
+        return $this->joueur->searchJoueurs($critere);
     }
 
-    // Méthode pour gérer la modification
-    public function modifierJoueur($id, $nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $commentaire, $poste_prefere) {
+    // Modifier les informations d'un joueur
+    public function modifierJoueur($id, $nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $poste_prefere) {
         try {
-            return $this->joueur->updateJoueur($id, $nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $commentaire, $poste_prefere);
+            return $this->joueur->updateJoueur($id, $nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $poste_prefere);
         } catch (Exception $e) {
             return "Erreur lors de la modification : " . $e->getMessage();
         }
-    }   
+    }
 
+    // Ajouter un commentaire via le contrôleur
+    public function ajouterCommentaire($id_joueur, $commentaire) {
+        try {
+            return $this->joueur->ajouterCommentaire($id_joueur, $commentaire);
+        } catch (Exception $e) {
+            throw new Exception("Erreur lors de l'ajout du commentaire : " . $e->getMessage());
+        }
+    }
+
+
+    // Récupérer les commentaires d'un joueur
+    public function getCommentaires($id_joueur) {
+        try {
+            return $this->joueur->getCommentairesByJoueurId($id_joueur);
+        } catch (Exception $e) {
+            throw new Exception("Erreur lors de la récupération des commentaires : " . $e->getMessage());
+        }
+    }
+
+    // Récupérer les détails d'un joueur par ID
     public function getJoueurById($id) {
         try {
             return $this->joueur->getJoueurById($id);
         } catch (Exception $e) {
-            return null;
-        }
-    }  
-
-    // Méthode pour ajouter un joueur
-    public function ajouterJoueur($nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $commentaire, $poste_prefere) {
-        try {
-            // Utilisez createJoueur au lieu de updateJoueur
-            return $this->joueur->createJoueur($nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $commentaire, $poste_prefere);
-        } catch (Exception $e) {
-            throw new Exception("Erreur lors de l'ajout : " . $e->getMessage());
+            throw new Exception("Erreur lors de la récupération du joueur : " . $e->getMessage());
         }
     }
-    
-}
 
+    // Ajouter un joueur
+    public function ajouterJoueur($nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $poste_prefere) {
+        try {
+            return $this->joueur->createJoueur($nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $poste_prefere);
+        } catch (Exception $e) {
+            throw new Exception("Erreur lors de l'ajout du joueur : " . $e->getMessage());
+        }
+    }
+
+}
