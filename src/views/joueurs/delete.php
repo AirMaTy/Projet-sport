@@ -19,11 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_joueur'])) {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Liste des joueurs</title>
     <link rel="stylesheet" href="../../public/assets/css/joueurs.css">
 </head>
+
 <body>
     <?php include(__DIR__ . '/../layouts/header.php'); ?>
     <h1>Liste des joueurs</h1>
@@ -68,4 +70,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_joueur'])) {
     </table>
     <?php include(__DIR__ . '/../layouts/footer.php'); ?>
 </body>
+
 </html>

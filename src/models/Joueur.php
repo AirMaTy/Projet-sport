@@ -1,8 +1,10 @@
 <?php
-class Joueur {
+class Joueur
+{
     private $db;
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         if (!$db instanceof PDO) {
             throw new Exception("Une instance PDO valide est requise.");
         }
@@ -10,7 +12,8 @@ class Joueur {
     }
 
     // Récupérer tous les joueurs avec leurs commentaires groupés
-    public function getAll() {
+    public function getAll()
+    {
         $sql = "
             SELECT 
                 j.id_joueur AS id, 
@@ -30,7 +33,8 @@ class Joueur {
     }
 
     // Ajouter un commentaire pour un joueur
-    public function ajouterCommentaire($id_joueur, $commentaire) {
+    public function ajouterCommentaire($id_joueur, $commentaire)
+    {
         $sql = "INSERT INTO commentaires_joueurs (id_joueur, commentaire, date_commentaire)
                 VALUES (:id_joueur, :commentaire, NOW())";
         $stmt = $this->db->prepare($sql);
@@ -41,7 +45,8 @@ class Joueur {
 
 
     // Mettre à jour les informations d'un joueur
-    public function updateJoueur($id, $nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $poste_prefere) {
+    public function updateJoueur($id, $nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $poste_prefere)
+    {
         try {
             $sql = "UPDATE joueurs 
                     SET 
@@ -73,7 +78,8 @@ class Joueur {
     }
 
     // Récupérer les commentaires d'un joueur
-    public function getCommentairesByJoueurId($id_joueur) {
+    public function getCommentairesByJoueurId($id_joueur)
+    {
         $sql = "SELECT commentaire, date_commentaire FROM commentaires_joueurs WHERE id_joueur = :id_joueur ORDER BY date_commentaire DESC";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id_joueur', $id_joueur, PDO::PARAM_INT);
@@ -82,7 +88,8 @@ class Joueur {
     }
 
     // Méthode pour récupérer les détails d'un joueur par ID
-    public function getJoueurById($id) {
+    public function getJoueurById($id)
+    {
         $sql = "SELECT 
                     id_joueur AS id, 
                     nom, 
@@ -101,7 +108,8 @@ class Joueur {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     // Recherche de joueurs par critère
-    public function searchJoueurs($critere) {
+    public function searchJoueurs($critere)
+    {
         $critere = '%' . $critere . '%'; // Préparer le critère pour une recherche partielle
         $sql = "SELECT 
                     id_joueur AS id, 
@@ -122,7 +130,8 @@ class Joueur {
     }
 
     // Ajouter un nouveau joueur
-    public function createJoueur($nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $poste_prefere) {
+    public function createJoueur($nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $poste_prefere)
+    {
         $sql = "INSERT INTO joueurs (nom, prenom, num_licence, date_naissance, taille_cm, poids_kg, statut, poste_prefere)
                 VALUES (:nom, :prenom, :num_licence, :date_naissance, :taille_cm, :poids_kg, :statut, :poste_prefere)";
         $stmt = $this->db->prepare($sql);
@@ -146,7 +155,8 @@ class Joueur {
         $stmt->execute();
     }
 
-    public function aParticipeAMatch($id_joueur) {
+    public function aParticipeAMatch($id_joueur)
+    {
         $sql = "SELECT COUNT(*) AS total 
                 FROM feuilles_match 
                 WHERE id_joueur = :id_joueur";
@@ -156,5 +166,4 @@ class Joueur {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'] > 0; // Retourne vrai si le joueur a participé à au moins un match
     }
-    
 }

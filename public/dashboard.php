@@ -39,8 +39,10 @@ if (!isset($_SESSION['username'])) {
                 <p>Planifiez et gérez vos matchs.</p>
                 <div class="buttons">
                     <a href="../public/matchs/liste.php" class="button">Voir la liste</a>
+                    <a href="../public/matchs/resultats.php" class="button secondary">Ajouter les résultats d'un match</a>
                     <a href="../public/matchs/ajouter.php" class="button secondary">Ajouter un match</a>
                     <a href="../public/matchs/modifier.php" class="button secondary">Modifier un match</a>
+                    <a href="../public/matchs/delete.php" class="button danger">Supprimer un match</a>
                 </div>
             </div>
 

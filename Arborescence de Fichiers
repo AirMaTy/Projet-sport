@@ -10,9 +10,9 @@ projet-sport/
 │   ├── authenticate.php          # backend de connexion au compte Coach                            --> FAIT
 │   ├── joueurs/
 │   │   ├── liste.php             # Liste des joueurs                                               --> FAIT
-│   │   ├── ajouter.php           # Formulaire d'ajout de joueur        
+│   │   ├── ajouter.php           # Formulaire d'ajout de joueur                                    --> FAIT
 │   │   ├── modifier.php          # Formulaire de modification d'un joueur                          --> FAIT
-│   │   └── supprimer.php         # Script pour supprimer un joueur
+│   │   └── supprimer.php         # Script pour supprimer un joueur                                 --> FAIT
 │   ├── matchs/
 │   │   ├── liste.php             # Liste des matchs
 │   │   ├── ajouter.php           # Formulaire d'ajout d'un match
