@@ -56,15 +56,6 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
 
-            <!-- Catégorie Évaluations -->
-            <div class="category-card">
-                <h2>Évaluations</h2>
-                <p>Évaluez les performances des joueurs.</p>
-                <div class="buttons">
-                    <a href="../public/matchs/resultats.php" class="button">Évaluer les joueurs</a>
-                </div>
-            </div>
-
             <!-- Catégorie Statistiques -->
             <div class="category-card">
                 <h2>Statistiques</h2>

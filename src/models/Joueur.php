@@ -166,4 +166,12 @@ class Joueur
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'] > 0; // Retourne vrai si le joueur a participé à au moins un match
     }
+
+    // Récupérer les joueurs actifs
+    public function getJoueursActifs() {
+        $sql = "SELECT * FROM joueurs WHERE statut = 'actif'";
+        $result = $this->db->query($sql);
+        return $result ? $result->fetchAll(PDO::FETCH_ASSOC) : [];
+    }
+    
 }
