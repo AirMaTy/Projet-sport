@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($nom) && !empty($prenom) && !empty($num_licence) && !empty($date_naissance) && $taille_cm > 0 && $poids_kg > 0 && !empty($statut) && !empty($poste_prefere)) {
       try {
-        $controller->ajouterJoueur($nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, '', $poste_prefere);
+        $controller->ajouterJoueur($nom, $prenom, $num_licence, $date_naissance, $taille_cm, $poids_kg, $statut, $poste_prefere);
         $message = "Le joueur a été ajouté avec succès.";
       } catch (Exception $e) {
         $message = "Erreur lors de l'ajout : " . $e->getMessage();

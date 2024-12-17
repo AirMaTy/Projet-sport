@@ -8,11 +8,9 @@ class StatistiquesController {
         $this->statistiques = new Statistiques($pdo);
     }
 
+    // Récupérer les stats des matchs
     public function afficherStatsMatchs() {
-        // Appel à la méthode qui calcule les statistiques
         $matchStats = $this->statistiques->getMatchStats();
-
-        // Calcul des pourcentages si des matchs existent
         if ($matchStats['total'] > 0) {
             $matchStats['pourcentage_gagne'] = round(($matchStats['gagne'] / $matchStats['total']) * 100, 2);
             $matchStats['pourcentage_perdu'] = round(($matchStats['perdu'] / $matchStats['total']) * 100, 2);
@@ -22,8 +20,11 @@ class StatistiquesController {
             $matchStats['pourcentage_perdu'] = 0;
             $matchStats['pourcentage_nul'] = 0;
         }
-
-        // Retour des statistiques
         return $matchStats;
+    }
+
+    // Récupérer les statistiques des joueurs
+    public function afficherStatsJoueurs() {
+        return $this->statistiques->getPlayerStats();
     }
 }

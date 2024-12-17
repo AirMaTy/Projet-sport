@@ -31,5 +31,21 @@ class Statistiques {
     
         return $result;
     }
+
+    public function getPlayerStats() {
+        $query = "SELECT 
+                    j.nom, 
+                    j.poste_prefere,
+                    j.statut,
+                    COALESCE(s.nombre_titularisations, 0) AS titularisations,
+                    COALESCE(s.nombre_remplacements, 0) AS remplacements,
+                    COALESCE(s.moyenne_evaluation, 0) AS moyenne_evaluation,
+                    COALESCE(s.pourcentage_victoires, 0) AS pourcentage_victoires
+                  FROM joueurs j
+                  LEFT JOIN statistiques s ON j.id_joueur = s.id_joueur";
+        
+        $stmt = $this->db->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }
