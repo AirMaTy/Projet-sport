@@ -19,19 +19,29 @@ $matchStats = $controller->afficherStatsMatchs();
 
     <h1>Statistiques des Matchs</h1>
 
-    <table border="1">
-        <tr>
-            <th>Total de matchs</th>
-            <th>Victoires</th>
-            <th>Défaites</th>
-            <th>Nuls</th>
-        </tr>
-        <tr>
-            <td><?= htmlspecialchars($matchStats['total'] ?? 0) ?></td>
-            <td><?= htmlspecialchars($matchStats['victoires'] ?? 0) ?></td>
-            <td><?= htmlspecialchars($matchStats['defaites'] ?? 0) ?></td>
-            <td><?= htmlspecialchars($matchStats['nuls'] ?? 0) ?></td>
-        </tr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Total de matchs</th>
+                <th>Victoires</th>
+                <th>% Victoires</th>
+                <th>Défaites</th>
+                <th>% Défaites</th>
+                <th>Nuls</th>
+                <th>% Nuls</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><?= htmlspecialchars($matchStats['total']) ?></td>
+                <td><?= htmlspecialchars($matchStats['gagne']) ?></td>
+                <td><?= htmlspecialchars($matchStats['pourcentage_gagne']) ?>%</td>
+                <td><?= htmlspecialchars($matchStats['perdu']) ?></td>
+                <td><?= htmlspecialchars($matchStats['pourcentage_perdu']) ?>%</td>
+                <td><?= htmlspecialchars($matchStats['nul']) ?></td>
+                <td><?= htmlspecialchars($matchStats['pourcentage_nul']) ?>%</td>
+            </tr>
+        </tbody>
     </table>
 
     <?php include(__DIR__ . '/../layouts/footer.php'); ?>
