@@ -11,7 +11,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     if ($username === $correct_username && $password === $correct_password) {
         $_SESSION['username'] = $username;
 
-        header('Location: dashboard.php');
+        header('Location: index.php');
         exit;
     } else {
         echo "Nom d'utilisateur ou mot de passe incorrect.";

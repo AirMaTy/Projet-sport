@@ -28,9 +28,10 @@ class Joueur
             FROM joueurs j
             LEFT JOIN commentaires_joueurs c ON j.id_joueur = c.id_joueur
             GROUP BY j.id_joueur, j.nom, j.prenom, j.date_naissance, j.poste_prefere, j.num_licence, j.taille_cm, j.poids_kg";
-        $stmt = $this->db->query($sql);
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    }    
 
     // Ajouter un commentaire pour un joueur
     public function ajouterCommentaire($id_joueur, $commentaire)
@@ -168,10 +169,13 @@ class Joueur
     }
 
     // Récupérer les joueurs actifs
-    public function getJoueursActifs() {
-        $sql = "SELECT * FROM joueurs WHERE statut = 'actif'";
-        $result = $this->db->query($sql);
-        return $result ? $result->fetchAll(PDO::FETCH_ASSOC) : [];
-    }
-    
+    public function getJoueursActifs()
+    {
+        $sql = "SELECT * FROM joueurs WHERE statut = :statut";
+        $stmt = $this->db->prepare($sql);
+        $statut = 'actif';
+        $stmt->bindParam(':statut', $statut, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }    
 }

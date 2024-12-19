@@ -7,10 +7,10 @@
         <nav>
             <ul>
                 <li><a href="/Projet-sport/public/index.php">Accueil</a></li>
+                <li><a href="/Projet-sport/public/dashboard.php">Dashboard</a></li>
                 <li><a href="/Projet-sport/public/joueurs/liste.php">Joueurs</a></li>
                 <li><a href="/Projet-sport/public/matchs/liste.php">Matchs</a></li>
                 <li><a href="/Projet-sport/public/statistiques/index.php">Statistiques</a></li>
-                <li><a href="/Projet-sport/public/parametres.php">Paramètres</a></li>
                 <li><a href="/Projet-sport/public/logout.php" class="logout">Déconnexion</a></li>
             </ul>
         </nav>
