@@ -71,7 +71,7 @@ $playerStats = $controller->afficherStatsJoueurs();
                 <td><?= htmlspecialchars($player['poste_prefere']) ?></td>
                 <td><?= $player['titularisations'] ?></td>
                 <td><?= $player['remplacements'] ?></td>
-                <td><?= $player['moyenne_evaluation'] !== null ? number_format($player['moyenne_evaluation'], 2) : '-' ?></td>
+                <td><?= $player['moyenne_evaluation'] !== null ? number_format($player['moyenne_evaluation'], 2) : '-' ?>/5</td>
                 <td><?= $player['pourcentage_victoires'] ?>%</td>
             </tr>
             <?php endforeach; ?>

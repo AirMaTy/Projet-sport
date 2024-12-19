@@ -14,66 +14,63 @@ class FeuillesMatch
     // Récupérer toutes les feuilles de match
     public function getAllFeuillesMatch()
     {
-        $sql = "SELECT * FROM feuilles_match";
-        $stmt = $this->db->query($sql);
+        $sql = "SELECT fm.id_feuille, fm.id_match, fm.id_joueur, fm.role, fm.poste, 
+                       j.nom AS joueur_nom, j.prenom AS joueur_prenom
+                FROM feuilles_match fm
+                JOIN joueurs j ON fm.id_joueur = j.id_joueur
+                ORDER BY fm.id_match";
+        return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Récupérer les joueurs actifs
+    public function getJoueursActifs()
+    {
+        $sql = "SELECT id_joueur, nom, prenom, poste_prefere 
+                FROM joueurs 
+                WHERE statut = 'Actif'";
+        return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Ajouter un joueur à la feuille de match
+    public function ajouterFeuilleMatch($id_match, $id_joueur, $role, $poste)
+    {
+        $sql = "INSERT INTO feuilles_match (id_match, id_joueur, role, poste)
+                VALUES (:id_match, :id_joueur, :role, :poste)";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            ':id_match' => $id_match,
+            ':id_joueur' => $id_joueur,
+            ':role' => $role,
+            ':poste' => $poste
+        ]);
+    }
+
+    // Récupérer la feuille de match par ID
+    public function getFeuilleMatchById($id_match)
+    {
+        $sql = "SELECT fm.id_feuille, fm.id_joueur, j.nom, j.prenom, fm.role, fm.poste
+                FROM feuilles_match fm
+                JOIN joueurs j ON fm.id_joueur = j.id_joueur
+                WHERE fm.id_match = :id_match";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id_match', $id_match, PDO::PARAM_INT);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Ajouter une nouvelle feuille de match
-    public function createFeuilleMatch($match_id, $joueur_id, $role, $poste)
+    // Supprimer un joueur d'une feuille de match
+    public function supprimerJoueurDeFeuille($id_match, $id_joueur)
     {
-        $sql = "INSERT INTO feuilles_match (id_match, id_joueur, role, poste) VALUES (:match_id, :joueur_id, :role, :poste)";
+        $sql = "DELETE FROM feuilles_match WHERE id_match = :id_match AND id_joueur = :id_joueur";
         $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':match_id', $match_id, PDO::PARAM_INT);
-        $stmt->bindParam(':joueur_id', $joueur_id, PDO::PARAM_INT);
-        $stmt->bindParam(':role', $role, PDO::PARAM_STR);
-        $stmt->bindParam(':poste', $poste, PDO::PARAM_STR);
-        return $stmt->execute();
+        $stmt->execute([':id_match' => $id_match, ':id_joueur' => $id_joueur]);
     }
 
-    // Mettre à jour une feuille de match existante
-    public function updateFeuilleMatch($id_feuille, $match_id, $joueur_id, $role, $poste)
+    // Supprimer complètement une feuille de match
+    public function supprimerFeuilleMatch($id_match)
     {
-        $sql = "UPDATE feuilles_match 
-                SET id_match = :match_id, id_joueur = :joueur_id, role = :role, poste = :poste 
-                WHERE id_feuille = :id_feuille";
+        $sql = "DELETE FROM feuilles_match WHERE id_match = :id_match";
         $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':id_feuille', $id_feuille, PDO::PARAM_INT);
-        $stmt->bindParam(':match_id', $match_id, PDO::PARAM_INT);
-        $stmt->bindParam(':joueur_id', $joueur_id, PDO::PARAM_INT);
-        $stmt->bindParam(':role', $role, PDO::PARAM_STR);
-        $stmt->bindParam(':poste', $poste, PDO::PARAM_STR);
-        return $stmt->execute();
+        $stmt->execute([':id_match' => $id_match]);
     }
-
-    // Supprimer une feuille de match
-    public function deleteFeuilleMatch($id_feuille)
-    {
-        $sql = "DELETE FROM feuilles_match WHERE id_feuille = :id_feuille";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':id_feuille', $id_feuille, PDO::PARAM_INT);
-        return $stmt->execute();
-    }
-
-    // Récupérer une feuille de match par ID
-    public function getFeuilleMatchById($id)
-    {
-        $sql = "SELECT * FROM feuilles_match WHERE id_feuille = :id";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    // Vérifier si un joueur participe à un match
-    public function joueurAParticipe($id_joueur)
-    {
-        $sql = "SELECT COUNT(*) as total FROM feuilles_match WHERE id_joueur = :id_joueur";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':id_joueur', $id_joueur, PDO::PARAM_INT);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result['total'] > 0;
-    }
-
 }

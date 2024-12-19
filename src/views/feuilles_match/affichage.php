@@ -1,40 +1,52 @@
+<?php
+require_once __DIR__ . '/../../../config/database.php';
+require_once __DIR__ . '/../../../src/controllers/FeuillesMatchController.php';
+
+// Initialiser le contrôleur
+$controller = new FeuillesMatchController($pdo);
+
+// Récupérer les données
+$feuillesMatch = $controller->afficherFeuillesMatch();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Feuilles de Match</title>
-    <link rel="stylesheet" href="/assets/css/matchs.css">
+    <title>Feuilles de Match</title>
+    <link rel="stylesheet" href="../../public/assets/css/feuilles_match.css">
 </head>
 <body>
-    <h1>Liste des Feuilles de Match</h1>
-    <table border="1" cellspacing="0" cellpadding="5">
-        <thead>
-            <tr>
-                <th>ID Feuille</th>
-                <th>ID Match</th>
-                <th>ID Joueur</th>
-                <th>Rôle</th>
-                <th>Poste</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($feuillesMatch)): ?>
+    <?php include(__DIR__ . '/../layouts/header.php'); ?>
+    <h1>Feuilles de Match</h1>
+
+    <?php if (!empty($feuillesMatch)): ?>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID Feuille</th>
+                    <th>ID Match</th>
+                    <th>Joueur</th>
+                    <th>Rôle</th>
+                    <th>Poste</th>
+                </tr>
+            </thead>
+            <tbody>
                 <?php foreach ($feuillesMatch as $feuille): ?>
                     <tr>
-                        <td><?= htmlspecialchars($feuille['id_feuille']); ?></td>
-                        <td><?= htmlspecialchars($feuille['id_match']); ?></td>
-                        <td><?= htmlspecialchars($feuille['id_joueur']); ?></td>
-                        <td><?= htmlspecialchars($feuille['role']); ?></td>
-                        <td><?= htmlspecialchars($feuille['poste']); ?></td>
+                        <td><?= htmlspecialchars($feuille['id_feuille']) ?></td>
+                        <td><?= htmlspecialchars($feuille['id_match']) ?></td>
+                        <td><?= htmlspecialchars($feuille['joueur_nom'] . ' ' . $feuille['joueur_prenom']) ?></td>
+                        <td><?= htmlspecialchars($feuille['role']) ?></td>
+                        <td><?= htmlspecialchars($feuille['poste']) ?></td>
                     </tr>
                 <?php endforeach; ?>
-            <?php else: ?>
-                <tr>
-                    <td colspan="5">Aucune feuille de match trouvée.</td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p>Aucune feuille de match trouvée.</p>
+    <?php endif; ?>
+
+    <?php include(__DIR__ . '/../layouts/footer.php'); ?>
 </body>
 </html>

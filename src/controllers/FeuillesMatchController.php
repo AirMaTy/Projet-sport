@@ -13,17 +13,35 @@ class FeuillesMatchController
         $this->feuillesMatch = new FeuillesMatch($pdo);
     }
 
-    // Méthode pour afficher toutes les feuilles de match
     public function afficherFeuillesMatch()
     {
-        try {
-            // Récupérer les feuilles de match via le modèle
-            $feuillesMatch = $this->feuillesMatch->getAllFeuillesMatch();
+        return $this->feuillesMatch->getAllFeuillesMatch();
+    }
 
-            // Inclure la vue avec les données
-            require_once __DIR__ . '/../views/feuilles_match/affichage.php';
-        } catch (Exception $e) {
-            echo "Erreur : " . $e->getMessage();
+    public function afficherJoueursActifs()
+    {
+        return $this->feuillesMatch->getJoueursActifs();
+    }
+
+    public function creerFeuilleMatch($id_match, $joueurs)
+    {
+        foreach ($joueurs as $joueur) {
+            $this->feuillesMatch->ajouterFeuilleMatch($id_match, $joueur['id_joueur'], $joueur['role'], $joueur['poste']);
         }
+    }
+
+    public function getFeuilleMatch($id_match)
+    {
+        return $this->feuillesMatch->getFeuilleMatchById($id_match);
+    }
+
+    public function supprimerJoueurDeFeuille($id_match, $id_joueur)
+    {
+        $this->feuillesMatch->supprimerJoueurDeFeuille($id_match, $id_joueur);
+    }
+
+    public function supprimerFeuilleMatch($id_match)
+    {
+        $this->feuillesMatch->supprimerFeuilleMatch($id_match);
     }
 }
