@@ -14,7 +14,7 @@ $feuillesMatch = $controller->afficherFeuillesMatch();
 <head>
     <meta charset="UTF-8">
     <title>Feuilles de Match</title>
-    <link rel="stylesheet" href="../../public/assets/css/feuilles_match.css">
+    <link rel="stylesheet" href="../../public/assets/css/feuillematch.css">
 </head>
 <body>
     <?php include(__DIR__ . '/../layouts/header.php'); ?>

@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Feuille de Match</title>
+    <link rel="stylesheet" href="../../public/assets/css/feuillematch.css">
 </head>
 <body>
     <?php include(__DIR__ . '/../layouts/header.php'); ?>
