@@ -53,6 +53,7 @@ if (!isset($_SESSION['username'])) {
                 <div class="buttons">
                     <a href="../public/feuilles_match/selection.php" class="button">Créer une feuille</a>
                     <a href="../public/feuilles_match/visualiser.php" class="button secondary">Voir les feuilles</a>
+                    <a href="../public/feuilles_match/evaluation.php" class="button secondary">Évaluer un joueur</a>
                     <a href="../public/feuilles_match/modifier.php" class="button danger">Modifier / Supprimer une feuille</a>
                 </div>
             </div>
