@@ -47,5 +47,24 @@ class Statistiques {
         $stmt = $this->db->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
+    public function getSelectionsConsecutives()
+    {
+        $query = "
+            SELECT 
+                j.id_joueur, 
+                j.nom, 
+                j.prenom, 
+                COUNT(fm.id_match) AS selections_consecutives
+            FROM joueurs j
+            LEFT JOIN feuilles_match fm ON j.id_joueur = fm.id_joueur
+            LEFT JOIN matchs m ON fm.id_match = m.id_match
+            WHERE m.statut = 'Terminé'
+            GROUP BY j.id_joueur, j.nom, j.prenom
+            ORDER BY selections_consecutives DESC";
+        
+        $stmt = $this->db->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+     
 }

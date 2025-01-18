@@ -27,4 +27,10 @@ class StatistiquesController {
     public function afficherStatsJoueurs() {
         return $this->statistiques->getPlayerStats();
     }
+
+    // Récupérer les sélections consécutives des joueurs
+    public function afficherSelectionsConsecutives()
+    {
+        return $this->statistiques->getSelectionsConsecutives();
+    }   
 }

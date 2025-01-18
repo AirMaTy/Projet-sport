@@ -10,6 +10,10 @@ $matchStats = $controller->afficherStatsMatchs();
 
 // Récupérer les statistiques des joueurs
 $playerStats = $controller->afficherStatsJoueurs();
+
+// Récupérer les sélections consécutives des joueurs
+$consecutiveSelections = $controller->afficherSelectionsConsecutives();
+
 ?>
 
 <!DOCTYPE html>
@@ -77,8 +81,32 @@ $playerStats = $controller->afficherStatsJoueurs();
             <?php endforeach; ?>
         </tbody>
     </table>
-
+    <!-- Sélections consécutives -->
+    <h1>Nombre de Sélections Consécutives par Joueur</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Sélections Consécutives</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($consecutiveSelections)): ?>
+                <?php foreach ($consecutiveSelections as $selection): ?>
+                <tr>
+                    <td><?= htmlspecialchars($selection['nom']) ?></td>
+                    <td><?= htmlspecialchars($selection['prenom']) ?></td>
+                    <td><?= htmlspecialchars($selection['selections_consecutives']) ?></td>
+                </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="3">Aucune donnée disponible.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
     <?php include(__DIR__ . '/../layouts/footer.php'); ?>
-
 </body>
 </html>
