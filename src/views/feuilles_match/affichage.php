@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../../config/database.php';
-require_once __DIR__ . '/../../../src/controllers/FeuillesMatchController.php';
+require_once '../../src/controllers/FeuillesMatchController.php';
 
 // Initialiser le contrôleur
 $controller = new FeuillesMatchController($pdo);

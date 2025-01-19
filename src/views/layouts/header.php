@@ -6,7 +6,7 @@
         <h1>Gestion d'Équipe Sportive</h1>
         <nav>
             <ul>
-                <li><a href="/Projet-sport/public/index.php">Accueil</a></li>
+                <li><a href="/Projet-sport/public/welcome.php">Accueil</a></li>
                 <li><a href="/Projet-sport/public/dashboard.php">Dashboard</a></li>
                 <li><a href="/Projet-sport/public/joueurs/liste.php">Joueurs</a></li>
                 <li><a href="/Projet-sport/public/matchs/liste.php">Matchs</a></li>
